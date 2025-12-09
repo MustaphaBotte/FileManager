@@ -62,7 +62,7 @@
             EncryptFilesBtn.Font = new Font("Times New Roman", 18F, FontStyle.Bold);
             EncryptFilesBtn.ForeColor = Color.White;
             EncryptFilesBtn.Image = Properties.Resources.Encrypt;
-            EncryptFilesBtn.Location = new Point(36, 104);
+            EncryptFilesBtn.Location = new Point(112, 139);
             EncryptFilesBtn.Name = "EncryptFilesBtn";
             EncryptFilesBtn.ShadowDecoration.CustomizableEdges = customizableEdges2;
             EncryptFilesBtn.Size = new Size(237, 87);
@@ -85,7 +85,7 @@
             DecryptFilesBtn.Font = new Font("Times New Roman", 18F, FontStyle.Bold);
             DecryptFilesBtn.ForeColor = Color.White;
             DecryptFilesBtn.Image = Properties.Resources.Decrypt;
-            DecryptFilesBtn.Location = new Point(306, 104);
+            DecryptFilesBtn.Location = new Point(382, 139);
             DecryptFilesBtn.Name = "DecryptFilesBtn";
             DecryptFilesBtn.ShadowDecoration.CustomizableEdges = customizableEdges4;
             DecryptFilesBtn.Size = new Size(237, 87);
@@ -109,7 +109,7 @@
             PasswordGeneratorBtn.ForeColor = Color.White;
             PasswordGeneratorBtn.Image = (Image)resources.GetObject("PasswordGeneratorBtn.Image");
             PasswordGeneratorBtn.ImageAlign = HorizontalAlignment.Left;
-            PasswordGeneratorBtn.Location = new Point(581, 104);
+            PasswordGeneratorBtn.Location = new Point(657, 139);
             PasswordGeneratorBtn.Name = "PasswordGeneratorBtn";
             PasswordGeneratorBtn.ShadowDecoration.CustomizableEdges = customizableEdges6;
             PasswordGeneratorBtn.Size = new Size(237, 87);
@@ -132,7 +132,7 @@
             CompressFilesBtn.Font = new Font("Times New Roman", 18F, FontStyle.Bold);
             CompressFilesBtn.ForeColor = Color.White;
             CompressFilesBtn.Image = (Image)resources.GetObject("CompressFilesBtn.Image");
-            CompressFilesBtn.Location = new Point(36, 237);
+            CompressFilesBtn.Location = new Point(250, 261);
             CompressFilesBtn.Name = "CompressFilesBtn";
             CompressFilesBtn.ShadowDecoration.CustomizableEdges = customizableEdges8;
             CompressFilesBtn.Size = new Size(237, 87);
@@ -155,7 +155,7 @@
             FileDownloaderBtn.Font = new Font("Times New Roman", 18F, FontStyle.Bold);
             FileDownloaderBtn.ForeColor = Color.White;
             FileDownloaderBtn.Image = (Image)resources.GetObject("FileDownloaderBtn.Image");
-            FileDownloaderBtn.Location = new Point(306, 237);
+            FileDownloaderBtn.Location = new Point(558, 261);
             FileDownloaderBtn.Name = "FileDownloaderBtn";
             FileDownloaderBtn.ShadowDecoration.CustomizableEdges = customizableEdges10;
             FileDownloaderBtn.Size = new Size(237, 87);
@@ -168,7 +168,7 @@
             guna2HtmlLabel1.BackColor = Color.Transparent;
             guna2HtmlLabel1.Font = new Font("Impact", 36F, FontStyle.Bold, GraphicsUnit.Point, 0);
             guna2HtmlLabel1.ForeColor = Color.Firebrick;
-            guna2HtmlLabel1.Location = new Point(295, 12);
+            guna2HtmlLabel1.Location = new Point(363, 12);
             guna2HtmlLabel1.Name = "guna2HtmlLabel1";
             guna2HtmlLabel1.Size = new Size(291, 62);
             guna2HtmlLabel1.TabIndex = 6;
@@ -181,7 +181,7 @@
             BackColor = Color.FromArgb(25, 28, 35);
             BackgroundImage = (Image)resources.GetObject("$this.BackgroundImage");
             BackgroundImageLayout = ImageLayout.Stretch;
-            ClientSize = new Size(862, 516);
+            ClientSize = new Size(1003, 545);
             Controls.Add(guna2HtmlLabel1);
             Controls.Add(FileDownloaderBtn);
             Controls.Add(CompressFilesBtn);

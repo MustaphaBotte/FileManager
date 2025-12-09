@@ -45,7 +45,7 @@ namespace FileManager.Ui_Interfaces
                 FileDownloader downloader = new FileDownloader();
                 downloader.Download(taskInfo, (progress, ID) =>
                 {
-                    this.DownloadDataGrid.Rows[ID].Cells[2].Value = progress;
+                    this.DownloadDataGrid.Rows[ID].Cells[2].Value = progress+"%";
                     if(progress>=100)
                     {
                         this.DownloadDataGrid.Rows[ID].Cells[3].Value = "Open File Explorer";
@@ -68,11 +68,11 @@ namespace FileManager.Ui_Interfaces
 
         private void DownloadDataGrid_CellMouseClick(object sender, DataGridViewCellMouseEventArgs e)
         {
-            if (DownloadDataGrid.Columns[e.ColumnIndex].Name == "ActionBtn" &&
-                DownloadDataGrid.Rows[e.RowIndex]?.Cells[e.ColumnIndex]?.Value.ToString() == "Start")
+            if (DownloadDataGrid.Columns[e.ColumnIndex].Name == "ActionBtn" && DownloadDataGrid.Rows[e.RowIndex]?.Cells[e.ColumnIndex]?.Value.ToString() == "Start")
             {
                 FileDownloader.TaskInfo? TaskInfo = (FileDownloader.TaskInfo)DownloadDataGrid.Rows[e.RowIndex].Tag;
                 ManageThreads(TaskInfo);
+                DownloadDataGrid.Rows[e.RowIndex].Cells[e.ColumnIndex].Value = "In progress";
             }
             else if (DownloadDataGrid.Rows[e.RowIndex]?.Cells[e.ColumnIndex]?.Value.ToString() == "Open File Explorer")
             {
@@ -102,6 +102,7 @@ namespace FileManager.Ui_Interfaces
                 var status = this.DownloadDataGrid?.Rows[i]?.Cells[3]?.Value;
                 if (status?.ToString() != "Open File Explorer")
                 {
+                    DownloadDataGrid.Rows[i].Cells[3].Value = "In progress";
                     ManageThreads((FileDownloader.TaskInfo)DownloadDataGrid.Rows[i]?.Tag);
                 }
             }

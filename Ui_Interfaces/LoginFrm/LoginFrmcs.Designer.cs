@@ -131,11 +131,11 @@
             guna2HtmlLabel3.BackColor = Color.Transparent;
             guna2HtmlLabel3.Font = new Font("Times New Roman", 20.25F, FontStyle.Bold, GraphicsUnit.Point, 0);
             guna2HtmlLabel3.ForeColor = Color.White;
-            guna2HtmlLabel3.Location = new Point(132, 41);
+            guna2HtmlLabel3.Location = new Point(162, 34);
             guna2HtmlLabel3.Name = "guna2HtmlLabel3";
-            guna2HtmlLabel3.Size = new Size(134, 33);
+            guna2HtmlLabel3.Size = new Size(71, 33);
             guna2HtmlLabel3.TabIndex = 5;
-            guna2HtmlLabel3.Text = "Login Page";
+            guna2HtmlLabel3.Text = "Login";
             // 
             // passwordTextBox
             // 
