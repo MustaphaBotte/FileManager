@@ -109,15 +109,5 @@ namespace FileManager.Properties {
                 return ((System.Drawing.Bitmap)(obj));
             }
         }
-        
-        /// <summary>
-        ///   Looks up a localized resource of type System.Drawing.Bitmap.
-        /// </summary>
-        internal static System.Drawing.Bitmap wp4660816_secure_wallpapers {
-            get {
-                object obj = ResourceManager.GetObject("wp4660816-secure-wallpapers", resourceCulture);
-                return ((System.Drawing.Bitmap)(obj));
-            }
-        }
     }
 }
