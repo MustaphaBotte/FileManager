@@ -8,7 +8,6 @@ using ICSharpCode;
 using ICSharpCode.SharpZipLib.Zip;
 using System.Security.Cryptography;
 using System.Data.SqlTypes;
-
 namespace FileManager.Packages
 {
     public class FileCompressor
