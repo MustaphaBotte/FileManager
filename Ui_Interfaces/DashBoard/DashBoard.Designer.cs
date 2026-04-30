@@ -47,7 +47,7 @@
             CompressFilesBtn = new Guna.UI2.WinForms.Guna2Button();
             FileDownloaderBtn = new Guna.UI2.WinForms.Guna2Button();
             guna2HtmlLabel1 = new Guna.UI2.WinForms.Guna2HtmlLabel();
-            guna2Button1 = new Guna.UI2.WinForms.Guna2Button();
+            ChunkChunkBtn = new Guna.UI2.WinForms.Guna2Button();
             SuspendLayout();
             // 
             // EncryptFilesBtn
@@ -177,29 +177,30 @@
             guna2HtmlLabel1.TabIndex = 6;
             guna2HtmlLabel1.Text = "Files Manager";
             // 
-            // guna2Button1
+            // ChunkChunkBtn
             // 
-            guna2Button1.BackColor = Color.Transparent;
-            guna2Button1.BorderColor = Color.Blue;
-            guna2Button1.BorderRadius = 20;
-            guna2Button1.BorderThickness = 1;
-            guna2Button1.CustomizableEdges = customizableEdges11;
-            guna2Button1.DisabledState.BorderColor = Color.DarkGray;
-            guna2Button1.DisabledState.CustomBorderColor = Color.DarkGray;
-            guna2Button1.DisabledState.FillColor = Color.FromArgb(169, 169, 169);
-            guna2Button1.DisabledState.ForeColor = Color.FromArgb(141, 141, 141);
-            guna2Button1.FillColor = Color.FromArgb(64, 64, 64);
-            guna2Button1.Font = new Font("Times New Roman", 18F, FontStyle.Bold);
-            guna2Button1.ForeColor = Color.White;
-            guna2Button1.Image = (Image)resources.GetObject("guna2Button1.Image");
-            guna2Button1.ImageAlign = HorizontalAlignment.Left;
-            guna2Button1.ImageSize = new Size(30, 30);
-            guna2Button1.Location = new Point(657, 261);
-            guna2Button1.Name = "guna2Button1";
-            guna2Button1.ShadowDecoration.CustomizableEdges = customizableEdges12;
-            guna2Button1.Size = new Size(237, 87);
-            guna2Button1.TabIndex = 7;
-            guna2Button1.Text = "Chunk Chunk Downloader";
+            ChunkChunkBtn.BackColor = Color.Transparent;
+            ChunkChunkBtn.BorderColor = Color.Blue;
+            ChunkChunkBtn.BorderRadius = 20;
+            ChunkChunkBtn.BorderThickness = 1;
+            ChunkChunkBtn.CustomizableEdges = customizableEdges11;
+            ChunkChunkBtn.DisabledState.BorderColor = Color.DarkGray;
+            ChunkChunkBtn.DisabledState.CustomBorderColor = Color.DarkGray;
+            ChunkChunkBtn.DisabledState.FillColor = Color.FromArgb(169, 169, 169);
+            ChunkChunkBtn.DisabledState.ForeColor = Color.FromArgb(141, 141, 141);
+            ChunkChunkBtn.FillColor = Color.FromArgb(64, 64, 64);
+            ChunkChunkBtn.Font = new Font("Times New Roman", 18F, FontStyle.Bold);
+            ChunkChunkBtn.ForeColor = Color.White;
+            ChunkChunkBtn.Image = (Image)resources.GetObject("ChunkChunkBtn.Image");
+            ChunkChunkBtn.ImageAlign = HorizontalAlignment.Left;
+            ChunkChunkBtn.ImageSize = new Size(30, 30);
+            ChunkChunkBtn.Location = new Point(657, 261);
+            ChunkChunkBtn.Name = "ChunkChunkBtn";
+            ChunkChunkBtn.ShadowDecoration.CustomizableEdges = customizableEdges12;
+            ChunkChunkBtn.Size = new Size(237, 87);
+            ChunkChunkBtn.TabIndex = 7;
+            ChunkChunkBtn.Text = "Chunk Chunk Downloader";
+            ChunkChunkBtn.Click += ChunkChunkBtn_Click;
             // 
             // DashBoard
             // 
@@ -209,7 +210,7 @@
             BackgroundImage = (Image)resources.GetObject("$this.BackgroundImage");
             BackgroundImageLayout = ImageLayout.Stretch;
             ClientSize = new Size(1003, 545);
-            Controls.Add(guna2Button1);
+            Controls.Add(ChunkChunkBtn);
             Controls.Add(guna2HtmlLabel1);
             Controls.Add(FileDownloaderBtn);
             Controls.Add(CompressFilesBtn);
@@ -230,6 +231,6 @@
         private Guna.UI2.WinForms.Guna2Button CompressFilesBtn;
         private Guna.UI2.WinForms.Guna2Button FileDownloaderBtn;
         private Guna.UI2.WinForms.Guna2HtmlLabel guna2HtmlLabel1;
-        private Guna.UI2.WinForms.Guna2Button guna2Button1;
+        private Guna.UI2.WinForms.Guna2Button ChunkChunkBtn;
     }
 }

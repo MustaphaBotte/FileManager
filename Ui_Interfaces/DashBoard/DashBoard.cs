@@ -1,4 +1,5 @@
 using FileManager.Ui_Interfaces;
+using FileManager.Ui_Interfaces.ChunkChunkDownloader;
 using FileManager.Ui_Interfaces.FileCompressor;
 using FileManager.Ui_Interfaces.FileDecryptor;
 using FileManager.Ui_Interfaces.PasswordGenerator;
@@ -47,6 +48,14 @@ namespace FileManager
         private void DecryptFilesBtn_Click(object sender, EventArgs e)
         {
             using (FilesDecryptorFrm frm = new FilesDecryptorFrm())
+            {
+                frm.ShowDialog();
+            }
+        }
+
+        private void ChunkChunkBtn_Click(object sender, EventArgs e)
+        {
+            using (ChunkChunkDownloaderFrm frm = new ChunkChunkDownloaderFrm())
             {
                 frm.ShowDialog();
             }
