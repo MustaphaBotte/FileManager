@@ -28,6 +28,8 @@
         /// </summary>
         private void InitializeComponent()
         {
+            Guna.UI2.WinForms.Suite.CustomizableEdges customizableEdges11 = new Guna.UI2.WinForms.Suite.CustomizableEdges();
+            Guna.UI2.WinForms.Suite.CustomizableEdges customizableEdges12 = new Guna.UI2.WinForms.Suite.CustomizableEdges();
             Guna.UI2.WinForms.Suite.CustomizableEdges customizableEdges1 = new Guna.UI2.WinForms.Suite.CustomizableEdges();
             Guna.UI2.WinForms.Suite.CustomizableEdges customizableEdges2 = new Guna.UI2.WinForms.Suite.CustomizableEdges();
             Guna.UI2.WinForms.Suite.CustomizableEdges customizableEdges3 = new Guna.UI2.WinForms.Suite.CustomizableEdges();
@@ -38,8 +40,6 @@
             Guna.UI2.WinForms.Suite.CustomizableEdges customizableEdges8 = new Guna.UI2.WinForms.Suite.CustomizableEdges();
             Guna.UI2.WinForms.Suite.CustomizableEdges customizableEdges9 = new Guna.UI2.WinForms.Suite.CustomizableEdges();
             Guna.UI2.WinForms.Suite.CustomizableEdges customizableEdges10 = new Guna.UI2.WinForms.Suite.CustomizableEdges();
-            Guna.UI2.WinForms.Suite.CustomizableEdges customizableEdges11 = new Guna.UI2.WinForms.Suite.CustomizableEdges();
-            Guna.UI2.WinForms.Suite.CustomizableEdges customizableEdges12 = new Guna.UI2.WinForms.Suite.CustomizableEdges();
             Guna.UI2.WinForms.Suite.CustomizableEdges customizableEdges13 = new Guna.UI2.WinForms.Suite.CustomizableEdges();
             Guna.UI2.WinForms.Suite.CustomizableEdges customizableEdges14 = new Guna.UI2.WinForms.Suite.CustomizableEdges();
             Guna.UI2.WinForms.Suite.CustomizableEdges customizableEdges15 = new Guna.UI2.WinForms.Suite.CustomizableEdges();
@@ -61,7 +61,6 @@
             startDownloadButton = new Guna.UI2.WinForms.Guna2Button();
             stopDownloadButton = new Guna.UI2.WinForms.Guna2Button();
             guna2HtmlLabel4 = new Guna.UI2.WinForms.Guna2HtmlLabel();
-            overallProgressBar = new Guna.UI2.WinForms.Guna2ProgressBar();
             overallPercentageLabel = new Guna.UI2.WinForms.Guna2HtmlLabel();
             chunk0ProgressBar = new Guna.UI2.WinForms.Guna2ProgressBar();
             chunk1ProgressBar = new Guna.UI2.WinForms.Guna2ProgressBar();
@@ -74,9 +73,10 @@
             guna2Panel2 = new Guna.UI2.WinForms.Guna2Panel();
             guna2HtmlLabel5 = new Guna.UI2.WinForms.Guna2HtmlLabel();
             speedLabel = new Guna.UI2.WinForms.Guna2HtmlLabel();
-            etaLabel = new Guna.UI2.WinForms.Guna2HtmlLabel();
             guna2HtmlLabel6 = new Guna.UI2.WinForms.Guna2HtmlLabel();
             statusLabel = new Guna.UI2.WinForms.Guna2HtmlLabel();
+            etaLabel = new Guna.UI2.WinForms.Guna2HtmlLabel();
+            overallProgressBar = new Guna.UI2.WinForms.Guna2ProgressBar();
             guna2Panel1.SuspendLayout();
             guna2Panel2.SuspendLayout();
             SuspendLayout();
@@ -88,7 +88,7 @@
             guna2HtmlLabel1.ForeColor = Color.FromArgb(0, 120, 215);
             guna2HtmlLabel1.Location = new Point(20, 15);
             guna2HtmlLabel1.Name = "guna2HtmlLabel1";
-            guna2HtmlLabel1.Size = new Size(350, 43);
+            guna2HtmlLabel1.Size = new Size(338, 47);
             guna2HtmlLabel1.TabIndex = 3;
             guna2HtmlLabel1.Text = "Download Accelerator";
             // 
@@ -104,11 +104,11 @@
             guna2Panel1.Controls.Add(browseFolderButton);
             guna2Panel1.Controls.Add(startDownloadButton);
             guna2Panel1.Controls.Add(stopDownloadButton);
-            guna2Panel1.CustomizableEdges = customizableEdges21;
+            guna2Panel1.CustomizableEdges = customizableEdges11;
             guna2Panel1.Location = new Point(20, 70);
             guna2Panel1.Name = "guna2Panel1";
-            guna2Panel1.ShadowDecoration.CustomizableEdges = customizableEdges22;
-            guna2Panel1.ShadowDecoration.Shadow = new System.Windows.Forms.Padding(0, 2, 0, 8);
+            guna2Panel1.ShadowDecoration.CustomizableEdges = customizableEdges12;
+            guna2Panel1.ShadowDecoration.Shadow = new Padding(0, 2, 0, 8);
             guna2Panel1.Size = new Size(945, 130);
             guna2Panel1.TabIndex = 4;
             // 
@@ -119,7 +119,7 @@
             guna2HtmlLabel2.ForeColor = Color.White;
             guna2HtmlLabel2.Location = new Point(15, 12);
             guna2HtmlLabel2.Name = "guna2HtmlLabel2";
-            guna2HtmlLabel2.Size = new Size(40, 19);
+            guna2HtmlLabel2.Size = new Size(31, 19);
             guna2HtmlLabel2.TabIndex = 4;
             guna2HtmlLabel2.Text = "URL:";
             // 
@@ -137,13 +137,13 @@
             urlTextBox.FocusedState.BorderColor = Color.FromArgb(0, 120, 215);
             urlTextBox.FocusedState.FillColor = Color.FromArgb(35, 38, 47);
             urlTextBox.Font = new Font("Segoe UI", 9F);
-            urlTextBox.ForeColor = Color.White;
+            urlTextBox.ForeColor = Color.Black;
             urlTextBox.HoverState.BorderColor = Color.FromArgb(0, 120, 215);
             urlTextBox.HoverState.FillColor = Color.FromArgb(35, 38, 47);
             urlTextBox.Location = new Point(15, 33);
             urlTextBox.Margin = new Padding(3, 4, 3, 4);
             urlTextBox.Name = "urlTextBox";
-            urlTextBox.PasswordChar = '\0';
+            urlTextBox.PlaceholderForeColor = Color.Black;
             urlTextBox.PlaceholderText = "Enter download URL...";
             urlTextBox.SelectedText = "";
             urlTextBox.ShadowDecoration.CustomizableEdges = customizableEdges2;
@@ -157,7 +157,7 @@
             guna2HtmlLabel3.ForeColor = Color.White;
             guna2HtmlLabel3.Location = new Point(15, 75);
             guna2HtmlLabel3.Name = "guna2HtmlLabel3";
-            guna2HtmlLabel3.Size = new Size(100, 19);
+            guna2HtmlLabel3.Size = new Size(92, 19);
             guna2HtmlLabel3.TabIndex = 6;
             guna2HtmlLabel3.Text = "Save Location:";
             // 
@@ -175,13 +175,13 @@
             savingPathTextBox.FocusedState.BorderColor = Color.FromArgb(0, 120, 215);
             savingPathTextBox.FocusedState.FillColor = Color.FromArgb(35, 38, 47);
             savingPathTextBox.Font = new Font("Segoe UI", 9F);
-            savingPathTextBox.ForeColor = Color.White;
+            savingPathTextBox.ForeColor = Color.Black;
             savingPathTextBox.HoverState.BorderColor = Color.FromArgb(0, 120, 215);
             savingPathTextBox.HoverState.FillColor = Color.FromArgb(35, 38, 47);
             savingPathTextBox.Location = new Point(15, 96);
             savingPathTextBox.Margin = new Padding(3, 4, 3, 4);
             savingPathTextBox.Name = "savingPathTextBox";
-            savingPathTextBox.PasswordChar = '\0';
+            savingPathTextBox.PlaceholderForeColor = Color.Black;
             savingPathTextBox.PlaceholderText = "Select save location...";
             savingPathTextBox.ReadOnly = true;
             savingPathTextBox.SelectedText = "";
@@ -208,6 +208,7 @@
             browseFolderButton.Size = new Size(255, 30);
             browseFolderButton.TabIndex = 8;
             browseFolderButton.Text = "Browse Folder";
+            browseFolderButton.Click += browseFolderButton_Click;
             // 
             // startDownloadButton
             // 
@@ -228,6 +229,7 @@
             startDownloadButton.Size = new Size(130, 35);
             startDownloadButton.TabIndex = 9;
             startDownloadButton.Text = "Start";
+            startDownloadButton.Click += startDownloadButton_Click;
             // 
             // stopDownloadButton
             // 
@@ -257,26 +259,9 @@
             guna2HtmlLabel4.ForeColor = Color.White;
             guna2HtmlLabel4.Location = new Point(20, 210);
             guna2HtmlLabel4.Name = "guna2HtmlLabel4";
-            guna2HtmlLabel4.Size = new Size(128, 21);
+            guna2HtmlLabel4.Size = new Size(117, 22);
             guna2HtmlLabel4.TabIndex = 11;
             guna2HtmlLabel4.Text = "Overall Progress";
-            // 
-            // overallProgressBar
-            // 
-            overallProgressBar.Anchor = AnchorStyles.Top | AnchorStyles.Left | AnchorStyles.Right;
-            overallProgressBar.BackColor = Color.Transparent;
-            overallProgressBar.CustomizableEdges = customizableEdges11;
-            overallProgressBar.FillColor = Color.FromArgb(0, 120, 215);
-            overallProgressBar.Location = new Point(20, 235);
-            overallProgressBar.Name = "overallProgressBar";
-            overallProgressBar.ProgressColor = Color.FromArgb(0, 120, 215);
-            overallProgressBar.ProgressColor2 = Color.FromArgb(0, 180, 255);
-            overallProgressBar.ShadowDecoration.CustomizableEdges = customizableEdges12;
-            overallProgressBar.Size = new Size(900, 28);
-            overallProgressBar.TabIndex = 12;
-            overallProgressBar.Text = "guna2ProgressBar1";
-            overallProgressBar.TextRenderingHint = System.Drawing.Text.TextRenderingHint.SystemDefault;
-            overallProgressBar.Value = 50;
             // 
             // overallPercentageLabel
             // 
@@ -284,9 +269,9 @@
             overallPercentageLabel.BackColor = Color.Transparent;
             overallPercentageLabel.Font = new Font("Segoe UI", 11F, FontStyle.Bold);
             overallPercentageLabel.ForeColor = Color.FromArgb(0, 120, 215);
-            overallPercentageLabel.Location = new Point(925, 235);
+            overallPercentageLabel.Location = new Point(927, 245);
             overallPercentageLabel.Name = "overallPercentageLabel";
-            overallPercentageLabel.Size = new Size(40, 21);
+            overallPercentageLabel.Size = new Size(38, 22);
             overallPercentageLabel.TabIndex = 13;
             overallPercentageLabel.Text = "0.0%";
             // 
@@ -295,7 +280,7 @@
             chunk0ProgressBar.Anchor = AnchorStyles.Top | AnchorStyles.Left | AnchorStyles.Right;
             chunk0ProgressBar.BackColor = Color.Transparent;
             chunk0ProgressBar.CustomizableEdges = customizableEdges13;
-            chunk0ProgressBar.FillColor = Color.FromArgb(76, 175, 80);
+            chunk0ProgressBar.FillColor = Color.DimGray;
             chunk0ProgressBar.Location = new Point(120, 300);
             chunk0ProgressBar.Name = "chunk0ProgressBar";
             chunk0ProgressBar.ProgressColor = Color.FromArgb(76, 175, 80);
@@ -305,13 +290,14 @@
             chunk0ProgressBar.TabIndex = 14;
             chunk0ProgressBar.Text = "guna2ProgressBar2";
             chunk0ProgressBar.TextRenderingHint = System.Drawing.Text.TextRenderingHint.SystemDefault;
+            chunk0ProgressBar.ValueChanged += chunkProgressBar_ValueChanged;
             // 
             // chunk1ProgressBar
             // 
             chunk1ProgressBar.Anchor = AnchorStyles.Top | AnchorStyles.Left | AnchorStyles.Right;
             chunk1ProgressBar.BackColor = Color.Transparent;
             chunk1ProgressBar.CustomizableEdges = customizableEdges15;
-            chunk1ProgressBar.FillColor = Color.FromArgb(76, 175, 80);
+            chunk1ProgressBar.FillColor = Color.DimGray;
             chunk1ProgressBar.Location = new Point(120, 330);
             chunk1ProgressBar.Name = "chunk1ProgressBar";
             chunk1ProgressBar.ProgressColor = Color.FromArgb(76, 175, 80);
@@ -321,13 +307,14 @@
             chunk1ProgressBar.TabIndex = 15;
             chunk1ProgressBar.Text = "guna2ProgressBar3";
             chunk1ProgressBar.TextRenderingHint = System.Drawing.Text.TextRenderingHint.SystemDefault;
+            chunk1ProgressBar.ValueChanged += chunkProgressBar_ValueChanged;
             // 
             // chunk2ProgressBar
             // 
             chunk2ProgressBar.Anchor = AnchorStyles.Top | AnchorStyles.Left | AnchorStyles.Right;
             chunk2ProgressBar.BackColor = Color.Transparent;
             chunk2ProgressBar.CustomizableEdges = customizableEdges17;
-            chunk2ProgressBar.FillColor = Color.FromArgb(76, 175, 80);
+            chunk2ProgressBar.FillColor = Color.DimGray;
             chunk2ProgressBar.Location = new Point(120, 360);
             chunk2ProgressBar.Name = "chunk2ProgressBar";
             chunk2ProgressBar.ProgressColor = Color.FromArgb(76, 175, 80);
@@ -337,13 +324,14 @@
             chunk2ProgressBar.TabIndex = 16;
             chunk2ProgressBar.Text = "guna2ProgressBar4";
             chunk2ProgressBar.TextRenderingHint = System.Drawing.Text.TextRenderingHint.SystemDefault;
+            chunk2ProgressBar.ValueChanged += chunkProgressBar_ValueChanged;
             // 
             // chunk3ProgressBar
             // 
             chunk3ProgressBar.Anchor = AnchorStyles.Top | AnchorStyles.Left | AnchorStyles.Right;
             chunk3ProgressBar.BackColor = Color.Transparent;
             chunk3ProgressBar.CustomizableEdges = customizableEdges19;
-            chunk3ProgressBar.FillColor = Color.FromArgb(76, 175, 80);
+            chunk3ProgressBar.FillColor = Color.DimGray;
             chunk3ProgressBar.Location = new Point(120, 390);
             chunk3ProgressBar.Name = "chunk3ProgressBar";
             chunk3ProgressBar.ProgressColor = Color.FromArgb(76, 175, 80);
@@ -353,6 +341,7 @@
             chunk3ProgressBar.TabIndex = 17;
             chunk3ProgressBar.Text = "guna2ProgressBar5";
             chunk3ProgressBar.TextRenderingHint = System.Drawing.Text.TextRenderingHint.SystemDefault;
+            chunk3ProgressBar.ValueChanged += chunkProgressBar_ValueChanged;
             // 
             // chunk0Label
             // 
@@ -361,7 +350,7 @@
             chunk0Label.ForeColor = Color.White;
             chunk0Label.Location = new Point(20, 300);
             chunk0Label.Name = "chunk0Label";
-            chunk0Label.Size = new Size(95, 17);
+            chunk0Label.Size = new Size(76, 17);
             chunk0Label.TabIndex = 18;
             chunk0Label.Text = "Chunk 1 (0%)";
             // 
@@ -372,7 +361,7 @@
             chunk1Label.ForeColor = Color.White;
             chunk1Label.Location = new Point(20, 330);
             chunk1Label.Name = "chunk1Label";
-            chunk1Label.Size = new Size(95, 17);
+            chunk1Label.Size = new Size(76, 17);
             chunk1Label.TabIndex = 19;
             chunk1Label.Text = "Chunk 2 (0%)";
             // 
@@ -383,7 +372,7 @@
             chunk2Label.ForeColor = Color.White;
             chunk2Label.Location = new Point(20, 360);
             chunk2Label.Name = "chunk2Label";
-            chunk2Label.Size = new Size(95, 17);
+            chunk2Label.Size = new Size(76, 17);
             chunk2Label.TabIndex = 20;
             chunk2Label.Text = "Chunk 3 (0%)";
             // 
@@ -394,7 +383,7 @@
             chunk3Label.ForeColor = Color.White;
             chunk3Label.Location = new Point(20, 390);
             chunk3Label.Name = "chunk3Label";
-            chunk3Label.Size = new Size(95, 17);
+            chunk3Label.Size = new Size(76, 17);
             chunk3Label.TabIndex = 21;
             chunk3Label.Text = "Chunk 4 (0%)";
             // 
@@ -408,11 +397,11 @@
             guna2Panel2.Controls.Add(guna2HtmlLabel6);
             guna2Panel2.Controls.Add(statusLabel);
             guna2Panel2.Controls.Add(etaLabel);
-            guna2Panel2.CustomizableEdges = customizableEdges21;
+            guna2Panel2.CustomizableEdges = customizableEdges11;
             guna2Panel2.Location = new Point(20, 430);
             guna2Panel2.Name = "guna2Panel2";
-            guna2Panel2.ShadowDecoration.CustomizableEdges = customizableEdges22;
-            guna2Panel2.ShadowDecoration.Shadow = new System.Windows.Forms.Padding(0, 2, 0, 8);
+            guna2Panel2.ShadowDecoration.CustomizableEdges = customizableEdges12;
+            guna2Panel2.ShadowDecoration.Shadow = new Padding(0, 2, 0, 8);
             guna2Panel2.Size = new Size(945, 85);
             guna2Panel2.TabIndex = 27;
             // 
@@ -423,7 +412,7 @@
             guna2HtmlLabel5.ForeColor = Color.White;
             guna2HtmlLabel5.Location = new Point(15, 15);
             guna2HtmlLabel5.Name = "guna2HtmlLabel5";
-            guna2HtmlLabel5.Size = new Size(46, 19);
+            guna2HtmlLabel5.Size = new Size(44, 19);
             guna2HtmlLabel5.TabIndex = 22;
             guna2HtmlLabel5.Text = "Speed:";
             // 
@@ -434,20 +423,9 @@
             speedLabel.ForeColor = Color.FromArgb(76, 175, 80);
             speedLabel.Location = new Point(67, 15);
             speedLabel.Name = "speedLabel";
-            speedLabel.Size = new Size(71, 19);
+            speedLabel.Size = new Size(64, 19);
             speedLabel.TabIndex = 23;
             speedLabel.Text = "0.00 MB/s";
-            // 
-            // etaLabel
-            // 
-            etaLabel.BackColor = Color.Transparent;
-            etaLabel.Font = new Font("Segoe UI", 10F, FontStyle.Bold);
-            etaLabel.ForeColor = Color.FromArgb(76, 175, 80);
-            etaLabel.Location = new Point(15, 45);
-            etaLabel.Name = "etaLabel";
-            etaLabel.Size = new Size(110, 19);
-            etaLabel.TabIndex = 24;
-            etaLabel.Text = "ETA: 00:00:00";
             // 
             // guna2HtmlLabel6
             // 
@@ -456,7 +434,7 @@
             guna2HtmlLabel6.ForeColor = Color.White;
             guna2HtmlLabel6.Location = new Point(650, 15);
             guna2HtmlLabel6.Name = "guna2HtmlLabel6";
-            guna2HtmlLabel6.Size = new Size(46, 19);
+            guna2HtmlLabel6.Size = new Size(45, 19);
             guna2HtmlLabel6.TabIndex = 25;
             guna2HtmlLabel6.Text = "Status:";
             // 
@@ -467,9 +445,37 @@
             statusLabel.ForeColor = Color.FromArgb(255, 193, 7);
             statusLabel.Location = new Point(702, 15);
             statusLabel.Name = "statusLabel";
-            statusLabel.Size = new Size(46, 19);
+            statusLabel.Size = new Size(40, 19);
             statusLabel.TabIndex = 26;
             statusLabel.Text = "Ready";
+            // 
+            // etaLabel
+            // 
+            etaLabel.BackColor = Color.Transparent;
+            etaLabel.Font = new Font("Segoe UI", 10F, FontStyle.Bold);
+            etaLabel.ForeColor = Color.FromArgb(76, 175, 80);
+            etaLabel.Location = new Point(15, 45);
+            etaLabel.Name = "etaLabel";
+            etaLabel.Size = new Size(85, 19);
+            etaLabel.TabIndex = 24;
+            etaLabel.Text = "ETA: 00:00:00";
+            // 
+            // overallProgressBar
+            // 
+            overallProgressBar.Anchor = AnchorStyles.Top | AnchorStyles.Left | AnchorStyles.Right;
+            overallProgressBar.BackColor = Color.Transparent;
+            overallProgressBar.BorderRadius = 5;
+            overallProgressBar.CustomizableEdges = customizableEdges21;
+            overallProgressBar.FillColor = Color.DarkGray;
+            overallProgressBar.Location = new Point(35, 238);
+            overallProgressBar.Name = "overallProgressBar";
+            overallProgressBar.ProgressColor = Color.Cyan;
+            overallProgressBar.ProgressColor2 = Color.Cyan;
+            overallProgressBar.ShadowDecoration.CustomizableEdges = customizableEdges22;
+            overallProgressBar.Size = new Size(884, 29);
+            overallProgressBar.TabIndex = 28;
+            overallProgressBar.Text = "guna2ProgressBar2";
+            overallProgressBar.TextRenderingHint = System.Drawing.Text.TextRenderingHint.SystemDefault;
             // 
             // ChunkChunkDownloaderFrm
             // 
@@ -477,6 +483,7 @@
             AutoScaleMode = AutoScaleMode.Font;
             BackColor = Color.FromArgb(25, 28, 35);
             ClientSize = new Size(985, 560);
+            Controls.Add(overallProgressBar);
             Controls.Add(guna2Panel2);
             Controls.Add(chunk3Label);
             Controls.Add(chunk2Label);
@@ -487,7 +494,6 @@
             Controls.Add(chunk1ProgressBar);
             Controls.Add(chunk0ProgressBar);
             Controls.Add(overallPercentageLabel);
-            Controls.Add(overallProgressBar);
             Controls.Add(guna2HtmlLabel4);
             Controls.Add(guna2Panel1);
             Controls.Add(guna2HtmlLabel1);
@@ -514,7 +520,6 @@
         private Guna.UI2.WinForms.Guna2Button startDownloadButton;
         private Guna.UI2.WinForms.Guna2Button stopDownloadButton;
         private Guna.UI2.WinForms.Guna2HtmlLabel guna2HtmlLabel4;
-        private Guna.UI2.WinForms.Guna2ProgressBar overallProgressBar;
         private Guna.UI2.WinForms.Guna2HtmlLabel overallPercentageLabel;
         private Guna.UI2.WinForms.Guna2ProgressBar chunk0ProgressBar;
         private Guna.UI2.WinForms.Guna2ProgressBar chunk1ProgressBar;
@@ -530,5 +535,6 @@
         private Guna.UI2.WinForms.Guna2HtmlLabel etaLabel;
         private Guna.UI2.WinForms.Guna2HtmlLabel guna2HtmlLabel6;
         private Guna.UI2.WinForms.Guna2HtmlLabel statusLabel;
+        private Guna.UI2.WinForms.Guna2ProgressBar overallProgressBar;
     }
 }
