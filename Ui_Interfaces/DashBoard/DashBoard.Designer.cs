@@ -39,12 +39,15 @@
             Guna.UI2.WinForms.Suite.CustomizableEdges customizableEdges8 = new Guna.UI2.WinForms.Suite.CustomizableEdges();
             Guna.UI2.WinForms.Suite.CustomizableEdges customizableEdges9 = new Guna.UI2.WinForms.Suite.CustomizableEdges();
             Guna.UI2.WinForms.Suite.CustomizableEdges customizableEdges10 = new Guna.UI2.WinForms.Suite.CustomizableEdges();
+            Guna.UI2.WinForms.Suite.CustomizableEdges customizableEdges11 = new Guna.UI2.WinForms.Suite.CustomizableEdges();
+            Guna.UI2.WinForms.Suite.CustomizableEdges customizableEdges12 = new Guna.UI2.WinForms.Suite.CustomizableEdges();
             EncryptFilesBtn = new Guna.UI2.WinForms.Guna2Button();
             DecryptFilesBtn = new Guna.UI2.WinForms.Guna2Button();
             PasswordGeneratorBtn = new Guna.UI2.WinForms.Guna2Button();
             CompressFilesBtn = new Guna.UI2.WinForms.Guna2Button();
             FileDownloaderBtn = new Guna.UI2.WinForms.Guna2Button();
             guna2HtmlLabel1 = new Guna.UI2.WinForms.Guna2HtmlLabel();
+            guna2Button1 = new Guna.UI2.WinForms.Guna2Button();
             SuspendLayout();
             // 
             // EncryptFilesBtn
@@ -132,7 +135,7 @@
             CompressFilesBtn.Font = new Font("Times New Roman", 18F, FontStyle.Bold);
             CompressFilesBtn.ForeColor = Color.White;
             CompressFilesBtn.Image = (Image)resources.GetObject("CompressFilesBtn.Image");
-            CompressFilesBtn.Location = new Point(250, 261);
+            CompressFilesBtn.Location = new Point(112, 261);
             CompressFilesBtn.Name = "CompressFilesBtn";
             CompressFilesBtn.ShadowDecoration.CustomizableEdges = customizableEdges8;
             CompressFilesBtn.Size = new Size(237, 87);
@@ -155,7 +158,7 @@
             FileDownloaderBtn.Font = new Font("Times New Roman", 18F, FontStyle.Bold);
             FileDownloaderBtn.ForeColor = Color.White;
             FileDownloaderBtn.Image = (Image)resources.GetObject("FileDownloaderBtn.Image");
-            FileDownloaderBtn.Location = new Point(558, 261);
+            FileDownloaderBtn.Location = new Point(382, 261);
             FileDownloaderBtn.Name = "FileDownloaderBtn";
             FileDownloaderBtn.ShadowDecoration.CustomizableEdges = customizableEdges10;
             FileDownloaderBtn.Size = new Size(237, 87);
@@ -174,6 +177,30 @@
             guna2HtmlLabel1.TabIndex = 6;
             guna2HtmlLabel1.Text = "Files Manager";
             // 
+            // guna2Button1
+            // 
+            guna2Button1.BackColor = Color.Transparent;
+            guna2Button1.BorderColor = Color.Blue;
+            guna2Button1.BorderRadius = 20;
+            guna2Button1.BorderThickness = 1;
+            guna2Button1.CustomizableEdges = customizableEdges11;
+            guna2Button1.DisabledState.BorderColor = Color.DarkGray;
+            guna2Button1.DisabledState.CustomBorderColor = Color.DarkGray;
+            guna2Button1.DisabledState.FillColor = Color.FromArgb(169, 169, 169);
+            guna2Button1.DisabledState.ForeColor = Color.FromArgb(141, 141, 141);
+            guna2Button1.FillColor = Color.FromArgb(64, 64, 64);
+            guna2Button1.Font = new Font("Times New Roman", 18F, FontStyle.Bold);
+            guna2Button1.ForeColor = Color.White;
+            guna2Button1.Image = (Image)resources.GetObject("guna2Button1.Image");
+            guna2Button1.ImageAlign = HorizontalAlignment.Left;
+            guna2Button1.ImageSize = new Size(30, 30);
+            guna2Button1.Location = new Point(657, 261);
+            guna2Button1.Name = "guna2Button1";
+            guna2Button1.ShadowDecoration.CustomizableEdges = customizableEdges12;
+            guna2Button1.Size = new Size(237, 87);
+            guna2Button1.TabIndex = 7;
+            guna2Button1.Text = "Chunk Chunk Downloader";
+            // 
             // DashBoard
             // 
             AutoScaleDimensions = new SizeF(7F, 15F);
@@ -182,6 +209,7 @@
             BackgroundImage = (Image)resources.GetObject("$this.BackgroundImage");
             BackgroundImageLayout = ImageLayout.Stretch;
             ClientSize = new Size(1003, 545);
+            Controls.Add(guna2Button1);
             Controls.Add(guna2HtmlLabel1);
             Controls.Add(FileDownloaderBtn);
             Controls.Add(CompressFilesBtn);
@@ -202,5 +230,6 @@
         private Guna.UI2.WinForms.Guna2Button CompressFilesBtn;
         private Guna.UI2.WinForms.Guna2Button FileDownloaderBtn;
         private Guna.UI2.WinForms.Guna2HtmlLabel guna2HtmlLabel1;
+        private Guna.UI2.WinForms.Guna2Button guna2Button1;
     }
 }
