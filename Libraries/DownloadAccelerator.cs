@@ -26,7 +26,7 @@ namespace FileManager.Libraries
         public static async Task<DownloadInfo?> GetDownloadInfo(string FilePath)
         {
 
-            HttpClient httpClient = new HttpClient();
+            using HttpClient httpClient = new HttpClient();
             httpClient.Timeout = new TimeSpan(0, 1, 0);
             try
             {
@@ -69,7 +69,6 @@ namespace FileManager.Libraries
                 public long EndByte;
                 public int RemainingSeconds;
                 public double bytesPerSecond = 0;
-
                 public double Percentage => ((double)BytesDownloaded / TotalBytes) * 100;
 
                 public Chunk(int chunkIndex, long startByte, long endByte, long totalBytes, long bytesDownloaded)
@@ -105,7 +104,24 @@ namespace FileManager.Libraries
                 _SavingPath = SavingPath;
 
             }
+            private bool DeleteSavingFile()
+            {
+                try
+                {
+                    string FileName = Path.GetFileName(uri.LocalPath);
+                    string FullSavingPath = Path.Combine(_SavingPath, FileName);
+                    if (File.Exists(FullSavingPath))
+                    {
+                        File.Delete(FullSavingPath);
+                    }
+                    return true;
+                }
+                catch
+                {
+                    return false;
+                }
 
+            }
             private bool CreateSavingFile()
             {
                 try
@@ -113,7 +129,7 @@ namespace FileManager.Libraries
                     string FileName = Path.GetFileName(uri.LocalPath);
                     string FullSavingPath = Path.Combine(_SavingPath, FileName);
                     using var stream = new FileStream(FullSavingPath, FileMode.Create, FileAccess.Write, FileShare.None);
-                    stream.SetLength(this._FileSize); // reserve the space on disk
+                   // stream.SetLength(this._FileSize); // reserve the space on disk
                     return true;
                 }
                 catch
@@ -146,18 +162,16 @@ namespace FileManager.Libraries
 
                 return remaining ;
             }
-            private async Task DownloadAndSaveShunk(Chunk chunk, IProgress<Chunk> CallBack)
+            private async Task DownloadAndSaveShunk(Chunk chunk, IProgress<Chunk> CallBack, CancellationToken ct)
             {
-                try
-                {
+
                     var request = new HttpRequestMessage(HttpMethod.Get, _FilePath);
 
                     request.Headers.Range = new RangeHeaderValue(chunk.StartByte, chunk.EndByte);
 
-                    using var response = await httpClient.SendAsync(request, HttpCompletionOption.ResponseHeadersRead);
+                    using var response = await httpClient.SendAsync(request, HttpCompletionOption.ResponseHeadersRead, ct);
 
-                    using var stream = await response.Content.ReadAsStreamAsync();
-
+                    using var stream = await response.Content.ReadAsStreamAsync(ct);
 
                     var buffer = new byte[1048576]; // a 1MB buffer for streaming the chunk
 
@@ -168,33 +182,28 @@ namespace FileManager.Libraries
                     using FileStream OutPutFileStream = new FileStream(FullSavinPath, FileMode.Open, FileAccess.Write, FileShare.Write, 1 << 23, true);
                     OutPutFileStream.Position = chunk.StartByte;
 
-                    while ((bytesRead = await stream.ReadAsync(buffer, 0, buffer.Length)) > 0)
+                    while ((bytesRead = await stream.ReadAsync(buffer, 0, buffer.Length, ct)) > 0)
                     {
 
                         chunk.BytesDownloaded += bytesRead;
 
                         chunk.RemainingSeconds = RemainingTimeBySeconds(startTime, chunk);
+                        
                         CallBack.Report(chunk);
                         try
                         {
-                            await OutPutFileStream.WriteAsync(buffer, 0, bytesRead);
+                            
+                            await OutPutFileStream.WriteAsync(buffer, 0, bytesRead, ct);
                         }
-                        catch
+                        catch (IOException)
                         {
-                            Console.WriteLine("Wait a moment before retrying (exponential backoff is even better");
-                            await Task.Delay(1000);
+                            await Task.Delay(1000, ct);
                         }
-                    }
-
-                }
-                catch (Exception ex)
-                {
-                    // later
-                }
+                    }          
             }
 
 
-            public async Task start(IProgress<Chunk> ProgressCallBack)
+            public async Task start(IProgress<Chunk> ProgressCallBack, CancellationToken ct = default )
             {
                 Helpers.DownloadInfo? downloadInfo = await Helpers.GetDownloadInfo(_FilePath);
 
@@ -226,21 +235,32 @@ namespace FileManager.Libraries
                 for (int i = 0; i < 4; i++)
                 {
                     int index = i;
+                    long actualChunkSize = (index == 3)? downloadInfo.TotalBytes - index * chunkSize : chunkSize;
+                    long actualChunkendBytes = index == 3 ? downloadInfo.TotalBytes - 1 : (index + 1) * chunkSize - 1;
+
 
                     Chunk chunk = new Chunk(
                                             index,
                                             index * chunkSize,
-                                            index == 3 ? downloadInfo.TotalBytes - 1 : (index + 1) * chunkSize - 1,
-                                            chunkSize,
+                                            actualChunkendBytes,
+                                            actualChunkSize,
                                             0);
 
                     chunks[i] = chunk;
 
 
-                    tasks[i] = DownloadAndSaveShunk(chunk, ProgressCallBack);
+                    tasks[i] = DownloadAndSaveShunk(chunk, ProgressCallBack, ct);
                 }
-                await Task.WhenAll(tasks);
-
+                try
+                {            
+                    await Task.WhenAll(tasks);
+                }
+               
+                catch (OperationCanceledException e)
+                {
+                    DeleteSavingFile();
+                    throw;  // to UI
+                }
             }
         }
     }

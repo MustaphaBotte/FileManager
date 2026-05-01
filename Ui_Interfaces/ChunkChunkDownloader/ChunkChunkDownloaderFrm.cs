@@ -1,5 +1,6 @@
 ﻿
 using Guna.UI2.WinForms;
+using System.Diagnostics;
 using Downloader = FileManager.Libraries.DownloadAccelerator.Downloader;
 
 namespace FileManager.Ui_Interfaces.ChunkChunkDownloader
@@ -10,7 +11,8 @@ namespace FileManager.Ui_Interfaces.ChunkChunkDownloader
         Guna2HtmlLabel[] ChunkLabels = new Guna2HtmlLabel[4];
         int[] ChunksRemainintSeconds = new int[4];
         double[] ChunksDownloadSpeed = new double[4];
-
+        CancellationTokenSource ct = new CancellationTokenSource();
+        long TotalDownloaded = 0;
         public ChunkChunkDownloaderFrm()
         {
             InitializeComponent();
@@ -40,11 +42,10 @@ namespace FileManager.Ui_Interfaces.ChunkChunkDownloader
         private void ProgressHandler(Downloader.Chunk chunk)
         {
             int Percent = (int)chunk.Percentage;
-
             ProgressBars[chunk.ChunkIndex].Value = Percent;
             ChunksRemainintSeconds[chunk.ChunkIndex] = chunk.RemainingSeconds;
             ChunkLabels[chunk.ChunkIndex].Text = $"Chunk {chunk.ChunkIndex} ({Percent}%)";
-            ChunksDownloadSpeed[chunk.ChunkIndex] = chunk.bytesPerSecond/ 1_000_000.0;
+            ChunksDownloadSpeed[chunk.ChunkIndex] = chunk.bytesPerSecond / 1_000_000.0;
         }
         private async void StartDownloading(string FilePath, string SavingDir)
         {
@@ -53,8 +54,17 @@ namespace FileManager.Ui_Interfaces.ChunkChunkDownloader
                 Downloader downloader = new Downloader(FilePath, SavingDir);
                 Progress<Downloader.Chunk> progress = new Progress<Downloader.Chunk>((chunk) => ProgressHandler(chunk));
                 this.statusLabel.Text = "Running";
-                await downloader.start(progress);
+                Stopwatch stopwatch = new Stopwatch();
+                stopwatch.Start();
+                await downloader.start(progress, ct.Token);          
+                stopwatch.Stop();
+                MessageBox.Show($"the Download completed successfully in {stopwatch.Elapsed}", "Operation Success", MessageBoxButtons.OK, MessageBoxIcon.Information);
 
+
+            }
+            catch (OperationCanceledException)
+            {
+                this.statusLabel.Text = "canceled";
             }
             catch (Exception e)
             {
@@ -65,6 +75,8 @@ namespace FileManager.Ui_Interfaces.ChunkChunkDownloader
         {
             string Url = urlTextBox.Text;
             string SavingPath = savingPathTextBox.Text;
+            ct.Dispose();
+            ct = new CancellationTokenSource();
             if (!Uri.TryCreate(Url, UriKind.Absolute, out Uri? uri))
             {
                 MessageBox.Show("The Url provided is not valid !", "Bad Url", MessageBoxButtons.OK, MessageBoxIcon.Error);
@@ -75,30 +87,31 @@ namespace FileManager.Ui_Interfaces.ChunkChunkDownloader
                 MessageBox.Show("The saving directory does not exist", "Bad Directory", MessageBoxButtons.OK, MessageBoxIcon.Error);
                 return;
             }
+            this.startDownloadButton.Enabled = false;
+            this.stopDownloadButton.Enabled = true;
+
             StartDownloading(Url, SavingPath);
         }
 
         private void chunkProgressBar_ValueChanged(object sender, EventArgs e)
         {
-            float TotalPercent= 0;
-            int TotalRemainingSeconds = 0;
+            float TotalPercent = 0;
             double TotalDownloadSpeed = 0;
 
-            for(int i=0;i<ProgressBars.Length;i++)
+            for (int i = 0; i < ProgressBars.Length; i++)
             {
                 TotalPercent += ProgressBars[i].Value;
-                TotalRemainingSeconds += ChunksRemainintSeconds[i];
                 TotalDownloadSpeed += ChunksDownloadSpeed[i];
             }
 
-            double AvgDownloadSpeed = TotalDownloadSpeed / 4;
             TotalPercent /= 4;
 
 
+            int TotalRemainingSeconds = ChunksRemainintSeconds.Max();
 
             overallProgressBar.Value = (int)TotalPercent;
-            overallPercentageLabel.Text = $"{TotalPercent.ToString("F1")}%";
-            speedLabel.Text = AvgDownloadSpeed.ToString("F1")+ " MB/s";
+            overallPercentageLabel.Text = $"{TotalPercent.ToString("F2")}%";
+            speedLabel.Text = TotalDownloadSpeed.ToString("F2") + " MB/s";
 
             string ETA = TimeSpan.FromSeconds(TotalRemainingSeconds).ToString(@"hh\:mm\:ss");
             etaLabel.Text = $"ETA: {ETA}";
@@ -108,6 +121,28 @@ namespace FileManager.Ui_Interfaces.ChunkChunkDownloader
                 statusLabel.Text = "Completed";
                 statusLabel.ForeColor = Color.Green;
             }
+        }
+        private void ResetForm()
+        {
+            overallPercentageLabel.Text = "0.0%";
+            overallProgressBar.Value = 0;
+            etaLabel.Text = "00:00:00";
+            speedLabel.Text = "0.00 MB/s";
+            this.statusLabel.Text = "N/A";
+            this.stopDownloadButton.Enabled = false;
+            this.startDownloadButton.Enabled = true;
+        }
+        private void stopDownloadButton_Click(object sender, EventArgs e)
+        {
+            ct.Cancel();
+            
+
+            for (int i = 0; i < ProgressBars.Length; i++)
+            {
+                ProgressBars[i].Value = 0;
+                ChunkLabels[i].Text = $"Chunk {i} ({0}%)";
+            }
+            ResetForm();
         }
     }
 }

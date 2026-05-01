@@ -50,6 +50,8 @@
             Guna.UI2.WinForms.Suite.CustomizableEdges customizableEdges20 = new Guna.UI2.WinForms.Suite.CustomizableEdges();
             Guna.UI2.WinForms.Suite.CustomizableEdges customizableEdges21 = new Guna.UI2.WinForms.Suite.CustomizableEdges();
             Guna.UI2.WinForms.Suite.CustomizableEdges customizableEdges22 = new Guna.UI2.WinForms.Suite.CustomizableEdges();
+            Guna.UI2.WinForms.Suite.CustomizableEdges customizableEdges23 = new Guna.UI2.WinForms.Suite.CustomizableEdges();
+            Guna.UI2.WinForms.Suite.CustomizableEdges customizableEdges24 = new Guna.UI2.WinForms.Suite.CustomizableEdges();
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(ChunkChunkDownloaderFrm));
             guna2HtmlLabel1 = new Guna.UI2.WinForms.Guna2HtmlLabel();
             guna2Panel1 = new Guna.UI2.WinForms.Guna2Panel();
@@ -251,6 +253,7 @@
             stopDownloadButton.Size = new Size(115, 35);
             stopDownloadButton.TabIndex = 10;
             stopDownloadButton.Text = "Stop";
+            stopDownloadButton.Click += stopDownloadButton_Click;
             // 
             // guna2HtmlLabel4
             // 
@@ -397,12 +400,12 @@
             guna2Panel2.Controls.Add(guna2HtmlLabel6);
             guna2Panel2.Controls.Add(statusLabel);
             guna2Panel2.Controls.Add(etaLabel);
-            guna2Panel2.CustomizableEdges = customizableEdges11;
+            guna2Panel2.CustomizableEdges = customizableEdges21;
             guna2Panel2.Location = new Point(20, 430);
             guna2Panel2.Name = "guna2Panel2";
-            guna2Panel2.ShadowDecoration.CustomizableEdges = customizableEdges12;
+            guna2Panel2.ShadowDecoration.CustomizableEdges = customizableEdges22;
             guna2Panel2.ShadowDecoration.Shadow = new Padding(0, 2, 0, 8);
-            guna2Panel2.Size = new Size(945, 85);
+            guna2Panel2.Size = new Size(945, 81);
             guna2Panel2.TabIndex = 27;
             // 
             // guna2HtmlLabel5
@@ -445,9 +448,9 @@
             statusLabel.ForeColor = Color.FromArgb(255, 193, 7);
             statusLabel.Location = new Point(702, 15);
             statusLabel.Name = "statusLabel";
-            statusLabel.Size = new Size(40, 19);
+            statusLabel.Size = new Size(28, 19);
             statusLabel.TabIndex = 26;
-            statusLabel.Text = "Ready";
+            statusLabel.Text = "N/A";
             // 
             // etaLabel
             // 
@@ -465,13 +468,13 @@
             overallProgressBar.Anchor = AnchorStyles.Top | AnchorStyles.Left | AnchorStyles.Right;
             overallProgressBar.BackColor = Color.Transparent;
             overallProgressBar.BorderRadius = 5;
-            overallProgressBar.CustomizableEdges = customizableEdges21;
+            overallProgressBar.CustomizableEdges = customizableEdges23;
             overallProgressBar.FillColor = Color.DarkGray;
             overallProgressBar.Location = new Point(35, 238);
             overallProgressBar.Name = "overallProgressBar";
             overallProgressBar.ProgressColor = Color.Cyan;
             overallProgressBar.ProgressColor2 = Color.Cyan;
-            overallProgressBar.ShadowDecoration.CustomizableEdges = customizableEdges22;
+            overallProgressBar.ShadowDecoration.CustomizableEdges = customizableEdges24;
             overallProgressBar.Size = new Size(884, 29);
             overallProgressBar.TabIndex = 28;
             overallProgressBar.Text = "guna2ProgressBar2";
@@ -499,7 +502,7 @@
             Controls.Add(guna2HtmlLabel1);
             Icon = (Icon)resources.GetObject("$this.Icon");
             Name = "ChunkChunkDownloaderFrm";
-            Text = "Downloader Accelerator";
+            Text = "Download Accelerator";
             guna2Panel1.ResumeLayout(false);
             guna2Panel1.PerformLayout();
             guna2Panel2.ResumeLayout(false);
